@@ -32,18 +32,18 @@ public class PedidoService implements IPedidoService {
     @CachePut(value = "ordenesPorEstado", key = "#pedido.id")
     @Override
     public Pedido actualizarOrden(Pedido pedido) {
-        return pedidoRepository.save(pedido); // Guarda el pedido actualizado
+        return pedidoRepository.save(pedido);
     }
 
     @CacheEvict(value = "ordenesPorEstado", allEntries = true)
     @Override
     public void eliminarOrden(Long id) {
-        pedidoRepository.deleteById(id); // Elimina el pedido por ID
+        pedidoRepository.deleteById(id);
     }
 
     @CacheEvict(value = {"ordenesPorEstado"}, allEntries = true)
     @Override
     public void eliminarCache() {
-        // Se elimina la caché para "ordenesPorEstado"
+
     }
 }
